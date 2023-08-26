@@ -3,6 +3,7 @@ import { ChevronDownIcon, CheckIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useState, Fragment } from "react";
 import { RiComputerFill } from "react-icons/ri";
+import { useSession, signOut } from "next-auth/react";
 
 const options = [
   {
@@ -41,7 +42,9 @@ const Navbar = () => {
     path: "",
   });
 
-  console.log("selected", selected);
+  const { data: session } = useSession();
+
+  console.log(session);
 
   return (
     <div className="md:px-6 px-2 py-2 md:flex justify-between items-center bg-[#0F172A]">
@@ -111,10 +114,18 @@ const Navbar = () => {
         </div>
 
         <Link href="/build-pc">
-          <button className="md:px-4 md:mt-0 mt-2 w-full md:py-2 px-3 py-1.5 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button className="w-full md:w-[150px] md:px-4 md:mt-0 mt-2 md:py-2 px-3 py-1.5 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             PC Builder
           </button>
         </Link>
+        {session?.user?.email && (
+          <button
+            onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
+            className="md:px-4 md:mt-0 mt-2 w-full md:py-2 px-3 py-1.5 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Logout
+          </button>
+        )}
       </div>
     </div>
   );
