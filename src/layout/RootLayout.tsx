@@ -6,7 +6,7 @@ const RootLayout = ({ children }: { children: ReactElement }) => {
   return (
     <>
       <Navbar />
-      {children}
+      <div className="h-screen">{children}</div>
       <Footer />
     </>
   );
