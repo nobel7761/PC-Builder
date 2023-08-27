@@ -1,10 +1,12 @@
 import RootLayout from "@/layout/RootLayout";
 import React, { ReactElement } from "react";
+import { IProduct } from "..";
+import FeaturedProducts from "@/components/FeaturedProducts";
 
-const CpuPage = () => {
+const CpuPage = ({ allCpus }: { allCpus: IProduct[] }) => {
   return (
     <div>
-      <h1>CpuPage</h1>
+      <FeaturedProducts products={allCpus} />
     </div>
   );
 };
@@ -12,3 +14,15 @@ const CpuPage = () => {
 export default CpuPage;
 
 CpuPage.getLayout = (page: ReactElement) => <RootLayout>{page}</RootLayout>;
+
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/products");
+  const allProducts = await res.json();
+  const allCpus = allProducts?.data?.filter(
+    (product: IProduct) => product.category === "CPU"
+  );
+
+  return {
+    props: { allCpus },
+  };
+};

@@ -1,10 +1,12 @@
 import RootLayout from "@/layout/RootLayout";
 import React, { ReactElement } from "react";
+import { IProduct } from "..";
+import FeaturedProducts from "@/components/FeaturedProducts";
 
-const MonitorPage = () => {
+const MonitorPage = ({ allMonitors }: { allMonitors: IProduct[] }) => {
   return (
     <div>
-      <h1>MonitorPage</h1>
+      <FeaturedProducts products={allMonitors} />
     </div>
   );
 };
@@ -12,3 +14,15 @@ const MonitorPage = () => {
 export default MonitorPage;
 
 MonitorPage.getLayout = (page: ReactElement) => <RootLayout>{page}</RootLayout>;
+
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/products");
+  const allProducts = await res.json();
+  const allMonitors = allProducts?.data?.filter(
+    (product: IProduct) => product.category === "Monitor"
+  );
+
+  return {
+    props: { allMonitors },
+  };
+};
