@@ -1,5 +1,6 @@
 import { IProduct } from "@/pages";
 import { Button } from "@/shared/components/shadcn/button";
+import Link from "next/link";
 import React from "react";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
@@ -40,11 +41,13 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       </div>
 
       <div className="flex justify-between px-6">
-        <button
-          className={`text-blue-500 font-semibold rounded-md hover:underline`}
-        >
-          Details...
-        </button>
+        <Link href={`/product-details/${product?._id}`}>
+          <button
+            className={`text-blue-500 font-semibold rounded-md hover:underline`}
+          >
+            Details...
+          </button>
+        </Link>
 
         <button
           disabled={product.status === "Out of Stock"}
