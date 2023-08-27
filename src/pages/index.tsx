@@ -2,6 +2,7 @@ import RootLayout from "@/layout/RootLayout";
 import React, { ReactElement } from "react";
 import Banner from "@/components/Banner/Banner";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import FeaturedCategories from "@/components/FeaturedCategories";
 
 export interface IProduct {
   image: string;
@@ -20,11 +21,18 @@ export interface IProduct {
   }[];
 }
 
-const HomePage = ({ allProducts }: { allProducts: IProduct[] }) => {
+const HomePage = ({
+  allProducts,
+  allCategories,
+}: {
+  allProducts: IProduct[];
+  allCategories: string[];
+}) => {
   return (
     <div>
       <Banner />
       <FeaturedProducts products={allProducts} />
+      <FeaturedCategories categories={allCategories} />
     </div>
   );
 };
@@ -37,7 +45,14 @@ export const getStaticProps = async () => {
   const res = await fetch("http://localhost:3000/api/products");
   const data = await res.json();
 
+  const categories: string[] = [];
+  for (const product of data?.data) {
+    if (!categories.includes(product.category)) {
+      categories.push(product.category);
+    }
+  }
+
   return {
-    props: { allProducts: data.data },
+    props: { allProducts: data.data, allCategories: categories },
   };
 };
