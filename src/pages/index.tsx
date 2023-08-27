@@ -5,6 +5,7 @@ import FeaturedProducts from "@/components/FeaturedProducts";
 import FeaturedCategories from "@/components/FeaturedCategories";
 
 export interface IProduct {
+  _id?: string;
   image: string;
   name: string;
   category: string;
