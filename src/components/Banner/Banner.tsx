@@ -9,7 +9,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "./Banner.module.css";
-import Image from "next/image";
 
 const Banner = () => {
   return (

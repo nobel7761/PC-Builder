@@ -1,14 +1,30 @@
 import RootLayout from "@/layout/RootLayout";
 import React, { ReactElement } from "react";
-import { useSession } from "next-auth/react";
 import Banner from "@/components/Banner/Banner";
+import FeaturedProducts from "@/components/FeaturedProducts";
 
-const HomePage = () => {
-  const { data: session } = useSession();
+export interface IProduct {
+  image: string;
+  name: string;
+  category: string;
+  subCategory?: string;
+  status: string;
+  price: number;
+  description: string;
+  features: string[];
+  individual_rating: number;
+  average_rating: number;
+  reviews: {
+    username: string;
+    review: string;
+  }[];
+}
+
+const HomePage = ({ allProducts }: { allProducts: IProduct[] }) => {
   return (
     <div>
       <Banner />
-      {session && <p>{session?.user?.name}</p>}
+      <FeaturedProducts products={allProducts} />
     </div>
   );
 };
@@ -16,3 +32,12 @@ const HomePage = () => {
 export default HomePage;
 
 HomePage.getLayout = (page: ReactElement) => <RootLayout>{page}</RootLayout>;
+
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/products");
+  const data = await res.json();
+
+  return {
+    props: { allProducts: data.data },
+  };
+};
