@@ -23,7 +23,7 @@ const FeaturedProducts = ({ products }: { products: IProduct[] }) => {
 
   return (
     <div className="my-6 flex flex-col gap-y-6">
-      <h1 className="text-4xl font-bold uppercase text-center">
+      <h1 className="md:text-4xl text-2xl font-bold uppercase text-center">
         {pathname === "/cpu" && "ALL CPU"}
         {pathname === "/motherboard" && "ALL Motherboard"}
         {pathname === "/ram" && "ALL RAM"}
@@ -34,7 +34,7 @@ const FeaturedProducts = ({ products }: { products: IProduct[] }) => {
         {pathname === "/" && "Featured Products"}
       </h1>
 
-      <div className="w-11/12 mx-auto grid grid-cols-4 gap-10">
+      <div className="w-11/12 mx-auto grid md:grid-cols-4 grid-cols-1 md:gap-10 gap-6">
         {shuffledData.slice(0, 11).map((product, index) => (
           <ProductCard key={index} product={product} />
         ))}

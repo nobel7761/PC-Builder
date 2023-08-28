@@ -5,11 +5,11 @@ import Category from "./Category";
 const FeaturedCategories = ({ categories }: { categories: string[] }) => {
   return (
     <div className="my-6">
-      <h1 className="text-4xl font-bold uppercase text-center">
+      <h1 className="md:text-4xl text-2xl font-bold uppercase text-center">
         Featured Categories
       </h1>
 
-      <div className="w-11/12 mx-auto grid grid-cols-4 gap-10 mt-6">
+      <div className="w-11/12 mx-auto grid md:grid-cols-4 grid-cols-1 md:gap-10 gap-6 mt-6">
         {categories.map((category, index) => (
           <Category key={index} category={category} />
         ))}

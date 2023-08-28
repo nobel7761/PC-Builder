@@ -14,12 +14,12 @@ import Image from "next/image";
 const LoginPage = () => {
   return (
     <div className="h-screen flex justify-center items-center bg-[#111827]">
-      <div className="flex items-center w-3/4">
-        <Card className="w-1/2 h-fit bg-[#1F2937] border-none text-white">
+      <div className="flex md:flex-row flex-col flex-col-reverse gap-y-4 md:gap-y-0 items-center w-3/4">
+        <Card className="md:w-1/2 w-full h-fit bg-[#1F2937] border-none text-white">
           <CardHeader className="flex flex-col gap-y-4">
-            <div className="flex gap-x-4">
+            <div className="flex md:flex-row flex-col items-center gap-x-4">
               <RiComputerFill className="text-6xl" />
-              <p className="text-[#1ABC9C] text-5xl uppercase font-bold">
+              <p className="text-[#1ABC9C] md:text-5xl text-2xl uppercase font-bold">
                 PC Builder APP
               </p>
             </div>
@@ -43,7 +43,7 @@ const LoginPage = () => {
             </Button>
           </CardContent>
         </Card>
-        <div className="w-1/2 flex justify-end">
+        <div className="md:w-1/2 w-full flex justify-end">
           <Image src="/login.svg" alt="logo-login" width={500} height={300} />
         </div>
       </div>

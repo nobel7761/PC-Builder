@@ -50,7 +50,7 @@ const PCBuild = ({ categories }: { categories: string[] }) => {
       <div className="flex justify-end">
         <Button
           disabled={buttonDisabled}
-          className="bg-indigo-600 w-1/6"
+          className="bg-indigo-600 md:w-1/6 w-full"
           onClick={() => {
             toast.success("PC Build Successful!");
           }}
