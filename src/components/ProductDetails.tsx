@@ -4,14 +4,16 @@ import { FaUserAlt } from "react-icons/fa";
 
 const ProductDetails = ({ product }: { product: IProduct }) => {
   return (
-    <div className="bg-gray-100 min-h-screen py-8">
+    <div className="bg-gray-100 min-h-screen py-8 md:px-0 px-4">
       <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
         <div className="flex flex-col md:flex-row w-full">
-          <div className="w-1/4">
+          <div className="md:w-1/4 w-full">
             <img src={`/${product.image}`} alt={product.name} />
           </div>
           <div className="md:ml-4 mt-4 md:mt-0 w-3/4">
-            <h1 className="text-2xl font-semibold">{product?.name}</h1>
+            <h1 className="md:text-2xl text-xl font-semibold">
+              {product?.name}
+            </h1>
             <p className="text-gray-600">{product?.category}</p>
             <p
               className={`text-sm mt-2 ${

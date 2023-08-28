@@ -69,43 +69,43 @@ const BuildCard = ({ category }: { category: string }) => {
     productName = pcBuild.cpu.title ? (
       <p>{pcBuild.cpu.title}</p>
     ) : (
-      <p className="mt-2 animate-pulse bg-slate-300 w-96 h-4 rounded"></p>
+      <p className="mt-2 animate-pulse bg-slate-300 md:w-96 w-40 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "motherboard") {
     productName = pcBuild.motherboard.title ? (
       <p>{pcBuild.motherboard.title}</p>
     ) : (
-      <p className="mt-2 animate-pulse bg-slate-300 w-96 h-4 rounded"></p>
+      <p className="mt-2 animate-pulse bg-slate-300 md:w-96 w-40 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "ram") {
     productName = pcBuild.ram.title ? (
       <p>{pcBuild.ram.title}</p>
     ) : (
-      <p className="mt-2 animate-pulse bg-slate-300 w-96 h-4 rounded"></p>
+      <p className="mt-2 animate-pulse bg-slate-300 md:w-96 w-40 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "power supply unit") {
     productName = pcBuild.powerSupply.title ? (
       <p>{pcBuild.powerSupply.title}</p>
     ) : (
-      <p className="mt-2 animate-pulse bg-slate-300 w-96 h-4 rounded"></p>
+      <p className="mt-2 animate-pulse bg-slate-300 md:w-96 w-40 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "storage device") {
     productName = pcBuild.storage.title ? (
       <p>{pcBuild.storage.title}</p>
     ) : (
-      <p className="mt-2 animate-pulse bg-slate-300 w-96 h-4 rounded"></p>
+      <p className="mt-2 animate-pulse bg-slate-300 md:w-96 w-40 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "monitor") {
     productName = pcBuild.monitor.title ? (
       <p>{pcBuild.monitor.title}</p>
     ) : (
-      <p className="mt-2 animate-pulse bg-slate-300 w-96 h-4 rounded"></p>
+      <p className="mt-2 animate-pulse bg-slate-300 md:w-96 w-40 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "others") {
     productName = pcBuild.others.title ? (
       <p>{pcBuild.others.title}</p>
     ) : (
-      <p className="mt-2 animate-pulse bg-slate-300 w-96 h-4 rounded"></p>
+      <p className="mt-2 animate-pulse bg-slate-300 md:w-96 w-40 h-4 rounded"></p>
     );
   }
 
@@ -114,57 +114,57 @@ const BuildCard = ({ category }: { category: string }) => {
     price = pcBuild.cpu.price ? (
       <p>{pcBuild.cpu.price}</p>
     ) : (
-      <p className="animate-pulse bg-slate-300 w-20 h-8 rounded"></p>
+      <p className="animate-pulse bg-slate-300 md:w-20 w-12 md:h-8 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "motherboard") {
     price = pcBuild.motherboard.price ? (
       <p>{pcBuild.motherboard.price}</p>
     ) : (
-      <p className="animate-pulse bg-slate-300 w-20 h-8 rounded"></p>
+      <p className="animate-pulse bg-slate-300 md:w-20 w-12 md:h-8 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "ram") {
     price = pcBuild.ram.price ? (
       <p>{pcBuild.ram.price}</p>
     ) : (
-      <p className="animate-pulse bg-slate-300 w-20 h-8 rounded"></p>
+      <p className="animate-pulse bg-slate-300 md:w-20 w-12 md:h-8 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "power supply unit") {
     price = pcBuild.powerSupply.price ? (
       <p>{pcBuild.powerSupply.price}</p>
     ) : (
-      <p className="animate-pulse bg-slate-300 w-20 h-8 rounded"></p>
+      <p className="animate-pulse bg-slate-300 md:w-20 w-12 md:h-8 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "storage device") {
     price = pcBuild.storage.price ? (
       <p>{pcBuild.storage.price}</p>
     ) : (
-      <p className="animate-pulse bg-slate-300 w-20 h-8 rounded"></p>
+      <p className="animate-pulse bg-slate-300 md:w-20 w-12 md:h-8 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "monitor") {
     price = pcBuild.monitor.price ? (
       <p>{pcBuild.monitor.price}</p>
     ) : (
-      <p className="animate-pulse bg-slate-300 w-20 h-8 rounded"></p>
+      <p className="animate-pulse bg-slate-300 md:w-20 w-12 md:h-8 h-4 rounded"></p>
     );
   } else if (category.toLowerCase() === "others") {
     price = pcBuild.others.price ? (
       <p>{pcBuild.others.price}</p>
     ) : (
-      <p className="animate-pulse bg-slate-300 w-20 h-8 rounded"></p>
+      <p className="animate-pulse bg-slate-300 md:w-20 w-12 md:h-8 h-4 rounded"></p>
     );
   }
 
   return (
-    <div className="w-full flex justify-between items-center my-8 p-4  rounded-md hover:shadow-md hover:shadow-black border">
+    <div className="w-full flex justify-between items-center my-8 md:p-4 p-2  rounded-md hover:shadow-md hover:shadow-black border">
       <div className="flex gap-x-6">
         <div className="text-6xl">{iconToShow}</div>
         <div>
-          <div className="font-bold text-xl">{category}</div>
-          <div>{productName}</div>
+          <div className="font-bold md:text-xl text-base">{category}</div>
+          <div className="md:text-base text-sm">{productName}</div>
         </div>
       </div>
-      <div className="flex gap-x-4 items-center">
-        <div className="flex items-center text-2xl text-indigo-600 font-bold">
+      <div className="flex flex-col md:gap-y-4 gap-y-1  items-center">
+        <div className="flex items-center md:text-2xl text-sm text-indigo-600 font-bold">
           {price}
         </div>
         <Link
@@ -184,7 +184,7 @@ const BuildCard = ({ category }: { category: string }) => {
               : "/others"
           }
         >
-          <Button>Choose</Button>
+          <Button className="md:px-8 px-2 md:py-4 py-1">Choose</Button>
         </Link>
       </div>
     </div>

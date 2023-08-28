@@ -120,6 +120,7 @@ const Navbar = () => {
         {session?.user?.email && (
           <Button
             variant="destructive"
+            className="w-full md:w-[150px] md:px-4 md:mt-0 mt-2 md:py-2 px-3 py-1.5 rounded-md text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
             onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
           >
             Logout
