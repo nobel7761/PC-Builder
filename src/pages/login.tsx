@@ -14,7 +14,7 @@ import Image from "next/image";
 const LoginPage = () => {
   return (
     <div className="h-screen flex justify-center items-center bg-[#111827]">
-      <div className="flex md:flex-row flex-col flex-col-reverse gap-y-4 md:gap-y-0 items-center w-3/4">
+      <div className="flex md:flex-row flex-col-reverse gap-y-4 md:gap-y-0 items-center w-3/4">
         <Card className="md:w-1/2 w-full h-fit bg-[#1F2937] border-none text-white">
           <CardHeader className="flex flex-col gap-y-4">
             <div className="flex md:flex-row flex-col items-center gap-x-4">
