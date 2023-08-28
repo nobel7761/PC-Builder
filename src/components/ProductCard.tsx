@@ -1,9 +1,80 @@
 import { IProduct } from "@/pages";
-import { Button } from "@/shared/components/shadcn/button";
+import { addToProductList } from "@/redux/features/buildPC/buildPC";
+import { useAppDispatch } from "@/redux/hook";
 import Link from "next/link";
 import React from "react";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
+  const dispatch = useAppDispatch();
+
+  const handleClick = (category: string) => {
+    let addProduct: any = {};
+
+    if (category.toLowerCase() === "cpu") {
+      addProduct.cpu = {
+        title: product.name,
+        image: product.image,
+        price: product.price,
+        route: "/cpu",
+      };
+    }
+
+    if (category.toLowerCase() === "motherboard") {
+      addProduct.motherboard = {
+        title: product.name,
+        image: product.image,
+        price: product.price,
+        route: "/motherboard",
+      };
+    }
+
+    if (category.toLowerCase() === "ram") {
+      addProduct.ram = {
+        title: product.name,
+        image: product.image,
+        price: product.price,
+        route: "/ram",
+      };
+    }
+
+    if (category.toLowerCase() === "power supply unit") {
+      addProduct.powerSupply = {
+        title: product.name,
+        image: product.image,
+        price: product.price,
+        route: "/power-supply-unit",
+      };
+    }
+
+    if (category.toLowerCase() === "storage device") {
+      addProduct.storage = {
+        title: product.name,
+        image: product.image,
+        price: product.price,
+        route: "/storage-device",
+      };
+    }
+
+    if (category.toLowerCase() === "monitor") {
+      addProduct.monitor = {
+        title: product.name,
+        image: product.image,
+        price: product.price,
+        route: "/monitor",
+      };
+    }
+
+    if (category.toLowerCase() === "others") {
+      addProduct.others = {
+        title: product.name,
+        image: product.image,
+        price: product.price,
+        route: "/others",
+      };
+    }
+
+    dispatch(addToProductList(addProduct));
+  };
   return (
     <div className="rounded-md overflow-hidden shadow-lg shadow-black py-4">
       <img src={product.image} alt={product.name} className="w-3/4 mx-auto" />
@@ -49,29 +120,20 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           </button>
         </Link>
 
-        <button
-          disabled={product.status === "Out of Stock"}
-          className={`bg-indigo-600 text-white px-4 py-1 rounded-md ${
-            product.status === "Out of Stock"
-              ? "cursor-not-allowed bg-indigo-200"
-              : "cursor-pointer"
-          }`}
-        >
-          Add To Builder
-        </button>
+        <Link href="/build-pc">
+          <button
+            disabled={product.status === "Out of Stock"}
+            onClick={() => handleClick(product.category)}
+            className={`bg-indigo-600 text-white px-4 py-1 rounded-md ${
+              product.status === "Out of Stock"
+                ? "cursor-not-allowed bg-indigo-600/50"
+                : "cursor-pointer"
+            }`}
+          >
+            Add To Builder
+          </button>
+        </Link>
       </div>
-
-      {/* <div className="px-6 pt-4 pb-2">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          #photography
-        </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          #travel
-        </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          #winter
-        </span>
-      </div> */}
     </div>
   );
 };

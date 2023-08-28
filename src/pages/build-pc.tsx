@@ -1,10 +1,11 @@
+import PCBuild from "@/components/PCBuild";
 import RootLayout from "@/layout/RootLayout";
 import React, { ReactElement } from "react";
 
-const BuildPC = () => {
+const BuildPC = ({ categories }: { categories: string[] }) => {
   return (
     <div>
-      <h1>building pc</h1>
+      <PCBuild categories={categories} />
     </div>
   );
 };
@@ -12,3 +13,20 @@ const BuildPC = () => {
 export default BuildPC;
 
 BuildPC.getLayout = (page: ReactElement) => <RootLayout>{page}</RootLayout>;
+
+export const getServerSideProps = async () => {
+  const res = await fetch("http://localhost:3000/api/products");
+  const data = await res.json();
+
+  const categories: string[] = [];
+
+  for (const product of data?.data) {
+    if (!categories.includes(product.category)) {
+      categories.push(product.category);
+    }
+  }
+
+  return {
+    props: { categories },
+  };
+};

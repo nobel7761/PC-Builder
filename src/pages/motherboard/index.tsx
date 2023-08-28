@@ -25,7 +25,7 @@ export const getStaticProps = async () => {
   const res = await fetch("http://localhost:3000/api/products");
   const allProducts = await res.json();
   const allMotherBoards = allProducts?.data?.filter(
-    (product: IProduct) => product.category === "Monitor"
+    (product: IProduct) => product.category === "Motherboard"
   );
 
   return {
