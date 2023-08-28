@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface IBuildPC {
-  title: string | null;
-  image: string | null;
-  price: number | null;
-  route: string | null;
+  title: string;
+  image: string;
+  price: number;
+  route: string;
 }
 
 interface IInitialState {
@@ -22,46 +22,46 @@ interface IInitialState {
 const initialState: IInitialState = {
   pcBuild: {
     cpu: {
-      title: null,
-      image: null,
-      price: null,
-      route: null,
+      title: "",
+      image: "",
+      price: 0,
+      route: "",
     },
     motherboard: {
-      title: null,
-      image: null,
-      price: null,
-      route: null,
+      title: "",
+      image: "",
+      price: 0,
+      route: "",
     },
     ram: {
-      title: null,
-      image: null,
-      price: null,
-      route: null,
+      title: "",
+      image: "",
+      price: 0,
+      route: "",
     },
     powerSupply: {
-      title: null,
-      image: null,
-      price: null,
-      route: null,
+      title: "",
+      image: "",
+      price: 0,
+      route: "",
     },
     storage: {
-      title: null,
-      image: null,
-      price: null,
-      route: null,
+      title: "",
+      image: "",
+      price: 0,
+      route: "",
     },
     monitor: {
-      title: null,
-      image: null,
-      price: null,
-      route: null,
+      title: "",
+      image: "",
+      price: 0,
+      route: "",
     },
     others: {
-      title: null,
-      image: null,
-      price: null,
-      route: null,
+      title: "",
+      image: "",
+      price: 0,
+      route: "",
     },
   },
 };
