@@ -6,6 +6,7 @@ import { MemoryStick } from "lucide-react";
 import { Button } from "@/shared/components/shadcn/button";
 import { useAppSelector } from "@/redux/hook";
 import Link from "next/link";
+import Image from "next/image";
 
 const BuildCard = ({ category }: { category: string }) => {
   const { pcBuild } = useAppSelector((state) => state.pcBuild);
@@ -14,51 +15,68 @@ const BuildCard = ({ category }: { category: string }) => {
 
   if (category.toLowerCase() === "cpu") {
     iconToShow = pcBuild.cpu.image ? (
-      <img src={pcBuild.cpu.image} alt="CPU" className="w-16 h-16" />
+      <Image src={`/${pcBuild.cpu.image}`} alt="CPU" width={64} height={64} />
     ) : (
       <BsCpuFill />
     );
   } else if (category.toLowerCase() === "motherboard") {
     iconToShow = pcBuild.motherboard.image ? (
-      <img
-        src={pcBuild.motherboard.image}
+      <Image
+        src={`/${pcBuild.motherboard.image}`}
         alt="motherboard"
-        className="w-16 h-16"
+        width={64}
+        height={64}
       />
     ) : (
       <BsFillMotherboardFill />
     );
   } else if (category.toLowerCase() === "ram") {
     iconToShow = pcBuild.ram.image ? (
-      <img src={pcBuild.ram.image} alt="ram" className="w-16 h-16" />
+      <Image src={`/${pcBuild.ram.image}`} alt="ram" width={64} height={64} />
     ) : (
       <MemoryStick className="w-16 h-16" />
     );
   } else if (category.toLowerCase() === "power supply unit") {
     iconToShow = pcBuild.powerSupply.image ? (
-      <img
-        src={pcBuild.powerSupply.image}
+      <Image
+        src={`/${pcBuild.powerSupply.image}`}
         alt="powerSupply"
-        className="w-16 h-16"
+        width={64}
+        height={64}
       />
     ) : (
       <MdPower />
     );
   } else if (category.toLowerCase() === "storage device") {
     iconToShow = pcBuild.storage.image ? (
-      <img src={pcBuild.storage.image} alt="storage" className="w-16 h-16" />
+      <Image
+        src={`/${pcBuild.storage.image}`}
+        alt="storage"
+        width={64}
+        height={64}
+      />
     ) : (
       <MdSdStorage />
     );
   } else if (category.toLowerCase() === "monitor") {
     iconToShow = pcBuild.monitor.image ? (
-      <img src={pcBuild.monitor.image} alt="monitor" className="w-16 h-16" />
+      <Image
+        src={`/${pcBuild.monitor.image}`}
+        alt="monitor"
+        width={64}
+        height={64}
+      />
     ) : (
       <PiMonitorFill />
     );
   } else if (category.toLowerCase() === "others") {
     iconToShow = pcBuild.others.image ? (
-      <img src={pcBuild.others.image} alt="others" className="w-16 h-16" />
+      <Image
+        src={`/${pcBuild.others.image}`}
+        alt="others"
+        width={64}
+        height={64}
+      />
     ) : (
       <BsKeyboard />
     );

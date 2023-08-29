@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "./Banner.module.css";
+import Image from "next/image";
 
 const Banner = () => {
   return (
@@ -20,32 +21,38 @@ const Banner = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        // pagination={{
+        //   clickable: true,
+        // }}
+        // navigation={true}
+        modules={[Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide>
-          <img
+          <Image
             src="/image_001.webp"
             alt="slider-1"
-            className="w-full h-[500px]"
+            layout="responsive"
+            height={300}
+            width={500}
           />
         </SwiperSlide>
         <SwiperSlide>
-          <img
+          <Image
             src="/image_002.jpg"
             alt="slider-2"
-            className="w-full h-[500px]"
+            layout="responsive"
+            height={300}
+            width={500}
           />
         </SwiperSlide>
         <SwiperSlide>
-          <img
+          <Image
             src="/image_003.png"
             alt="slider-3"
-            className="w-full h-[500px]"
+            layout="responsive"
+            height={300}
+            width={500}
           />
         </SwiperSlide>
       </Swiper>

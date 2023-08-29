@@ -37,9 +37,9 @@ export const getStaticProps = async ({
   const res = await fetch(
     `http://localhost:3000/api/product-details/${productId}`
   );
-  console.log("API Response:", res);
+  // console.log("API Response:", res);
   const data = await res.json();
-  console.log("Fetched Data:", data);
+  // console.log("Fetched Data:", data);
 
   return {
     props: {

@@ -1,4 +1,5 @@
 import { IProduct } from "@/pages";
+import Image from "next/image";
 import React from "react";
 import { FaUserAlt } from "react-icons/fa";
 
@@ -8,7 +9,12 @@ const ProductDetails = ({ product }: { product: IProduct }) => {
       <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
         <div className="flex flex-col md:flex-row w-full">
           <div className="md:w-1/4 w-full">
-            <img src={`/${product.image}`} alt={product.name} />
+            <Image
+              src={`/${product.image}`}
+              alt={product.name}
+              height={300}
+              width={500}
+            />
           </div>
           <div className="md:ml-4 mt-4 md:mt-0 w-3/4">
             <h1 className="md:text-2xl text-xl font-semibold">

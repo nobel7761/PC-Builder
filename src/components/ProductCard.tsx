@@ -1,6 +1,7 @@
 import { IProduct } from "@/pages";
 import { addToProductList } from "@/redux/features/buildPC/buildPC";
 import { useAppDispatch } from "@/redux/hook";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -77,7 +78,14 @@ const ProductCard = ({ product }: { product: IProduct }) => {
   };
   return (
     <div className="rounded-md overflow-hidden shadow-lg shadow-black py-4">
-      <img src={product.image} alt={product.name} className="w-3/4 mx-auto" />
+      <Image
+        src={`/${product.image}`}
+        alt={product.name}
+        layout="responsive"
+        height={300}
+        width={500}
+        className="px-6"
+      />
 
       <div className="px-6 py-4">
         <div className="font-bold text-lg mb-2 uppercase">
