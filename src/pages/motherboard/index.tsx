@@ -22,7 +22,7 @@ MotherBoardPage.getLayout = (page: ReactElement) => (
 );
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:5000/products");
+  const res = await fetch("http://pc-builder-server-pink.vercel.app/products");
   const allProducts = await res.json();
   const allMotherBoards = allProducts?.data?.filter(
     (product: IProduct) => product.category === "Motherboard"

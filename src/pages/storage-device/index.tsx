@@ -18,7 +18,7 @@ StorageDevice.getLayout = (page: ReactElement) => (
 );
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:5000/products");
+  const res = await fetch("http://pc-builder-server-pink.vercel.app/products");
   const allProducts = await res.json();
   const allStorages = allProducts?.data?.filter(
     (product: IProduct) => product.category === "Storage Device"
