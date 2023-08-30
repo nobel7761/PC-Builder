@@ -21,7 +21,7 @@ const FeaturedCategories = ({ categories }: { categories: string[] }) => {
 export default FeaturedCategories;
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3000/api/products");
+  const res = await fetch("http://localhost:5000/products");
   const data = await res.json();
   const allCategories = data?.data;
 

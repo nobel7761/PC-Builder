@@ -15,7 +15,7 @@ export default BuildPC;
 BuildPC.getLayout = (page: ReactElement) => <RootLayout>{page}</RootLayout>;
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:3000/api/products");
+  const res = await fetch("http://localhost:5000/products");
   const data = await res.json();
 
   const categories: string[] = [];

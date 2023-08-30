@@ -8,6 +8,8 @@ import React from "react";
 const ProductCard = ({ product }: { product: IProduct }) => {
   const dispatch = useAppDispatch();
 
+  console.log("Product", product);
+
   const handleClick = (category: string) => {
     let addProduct: any = {};
 
