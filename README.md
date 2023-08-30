@@ -2,7 +2,7 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Visit the application by clicking on this [link](www.google.com)
+Visit the application by clicking on this [link](https://pc-builder-client-five.vercel.app/)
 
 ## Getting Started
 
