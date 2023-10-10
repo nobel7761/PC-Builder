@@ -5,6 +5,7 @@ import React, { useState, Fragment } from "react";
 import { RiComputerFill } from "react-icons/ri";
 import { useSession, signOut } from "next-auth/react";
 import { Button } from "./shadcn/button";
+import { useRouter } from "next/router";
 
 const options = [
   {
@@ -38,6 +39,7 @@ const options = [
 ];
 
 const Navbar = () => {
+  const router = useRouter();
   const [selected, setSelected] = useState<{ label: string; path: string }>({
     label: "",
     path: "",
@@ -112,20 +114,18 @@ const Navbar = () => {
           </Listbox>
         </div>
 
-        <Link href="/build-pc">
-          <Button className="w-full md:w-[150px] md:px-4 md:mt-0 mt-2 md:py-2 px-3 py-1.5 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            PC Builder
-          </Button>
-        </Link>
+        <span
+          onClick={() => router.push("/configure")}
+          className="w-full md:w-[150px] md:px-4 md:mt-0 mt-2 md:py-2 px-3 py-1.5 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          PC Builder
+        </span>
+
         {session?.user?.email && (
           <Button
             variant="destructive"
             className="w-full md:w-[150px] md:px-4 md:mt-0 mt-2 md:py-2 px-3 py-1.5 rounded-md text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-            onClick={() =>
-              signOut({
-                callbackUrl: "https://pc-builder-client-five.vercel.app/",
-              })
-            }
+            onClick={() => signOut()}
           >
             Logout
           </Button>

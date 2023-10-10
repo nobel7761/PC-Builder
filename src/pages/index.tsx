@@ -1,26 +1,11 @@
+"use-client";
+
 import RootLayout from "@/layout/RootLayout";
 import React, { ReactElement } from "react";
 import Banner from "@/components/Banner/Banner";
+import { IProduct } from "@/types/types";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import FeaturedCategories from "@/components/FeaturedCategories";
-
-export interface IProduct {
-  _id?: string;
-  image: string;
-  name: string;
-  category: string;
-  subCategory?: string;
-  status: string;
-  price: number;
-  description: string;
-  features: string[];
-  individual_rating: number;
-  average_rating: number;
-  reviews: {
-    username: string;
-    review: string;
-  }[];
-}
 
 const HomePage = ({
   allProducts,
@@ -29,6 +14,9 @@ const HomePage = ({
   allProducts: IProduct[];
   allCategories: string[];
 }) => {
+  if (!allProducts || !allCategories) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
       <Banner />
@@ -43,17 +31,26 @@ export default HomePage;
 HomePage.getLayout = (page: ReactElement) => <RootLayout>{page}</RootLayout>;
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://pc-builder-server-pink.vercel.app/products");
-  const data = await res.json();
+  try {
+    const res = await fetch(
+      "https://backend-pc-builder-beta.vercel.app/products"
+    );
+    const data = await res.json();
 
-  const categories: string[] = [];
-  for (const product of data?.data) {
-    if (!categories.includes(product.category)) {
-      categories.push(product.category);
+    const categories: string[] = [];
+    for (const product of data) {
+      if (!categories.includes(product.category)) {
+        categories.push(product.category);
+      }
     }
-  }
 
-  return {
-    props: { allProducts: data.data, allCategories: categories },
-  };
+    return {
+      props: { allProducts: data || [], allCategories: categories }, // Ensure allProducts is an array
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return {
+      props: { allProducts: [], allCategories: [] }, // Handle the error gracefully by providing an empty array
+    };
+  }
 };

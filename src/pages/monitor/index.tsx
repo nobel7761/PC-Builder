@@ -1,7 +1,7 @@
 import RootLayout from "@/layout/RootLayout";
 import React, { ReactElement } from "react";
-import { IProduct } from "..";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import { IProduct } from "@/types/types";
 
 const MonitorPage = ({ allMonitors }: { allMonitors: IProduct[] }) => {
   return (
@@ -16,9 +16,11 @@ export default MonitorPage;
 MonitorPage.getLayout = (page: ReactElement) => <RootLayout>{page}</RootLayout>;
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://pc-builder-server-pink.vercel.app/products");
+  const res = await fetch(
+    "https://backend-pc-builder-beta.vercel.app/products"
+  );
   const allProducts = await res.json();
-  const allMonitors = allProducts?.data?.filter(
+  const allMonitors = allProducts?.filter(
     (product: IProduct) => product.category === "Monitor"
   );
 

@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
-import { IProduct } from "..";
 import RootLayout from "@/layout/RootLayout";
 import ProductDetails from "@/components/ProductDetails";
+import { IProduct } from "@/types/types";
 
 const ProductDetailsPage = ({ product }: { product: IProduct }) => {
   return (
@@ -18,10 +18,12 @@ ProductDetailsPage.getLayout = (page: ReactElement) => (
 );
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://pc-builder-server-pink.vercel.app/products");
+  const res = await fetch(
+    "https://backend-pc-builder-beta.vercel.app/products"
+  );
   const products = await res.json();
 
-  const paths = products.data.map((product: IProduct) => ({
+  const paths = products.map((product: IProduct) => ({
     params: { id: product._id },
   }));
 
@@ -35,15 +37,14 @@ export const getStaticProps = async ({
 }) => {
   const productId = params.id;
   const res = await fetch(
-    `http://pc-builder-server-pink.vercel.app/product/${productId}`
+    `https://backend-pc-builder-beta.vercel.app/product/${productId}`
   );
-  // console.log("API Response:", res);
+
   const data = await res.json();
-  // console.log("Fetched Data:", data);
 
   return {
     props: {
-      product: data.data,
+      product: data,
     },
   };
 };

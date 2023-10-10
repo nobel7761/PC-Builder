@@ -1,7 +1,7 @@
 import RootLayout from "@/layout/RootLayout";
 import React, { ReactElement } from "react";
-import { IProduct } from "..";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import { IProduct } from "@/types/types";
 
 const PowerSupplyPageUnit = ({
   powerSupplyProducts,
@@ -22,9 +22,11 @@ PowerSupplyPageUnit.getLayout = (page: ReactElement) => (
 );
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://pc-builder-server-pink.vercel.app/products");
+  const res = await fetch(
+    "https://backend-pc-builder-beta.vercel.app/products"
+  );
   const allProducts = await res.json();
-  const powerSupplyProducts = allProducts?.data?.filter(
+  const powerSupplyProducts = allProducts?.filter(
     (product: IProduct) => product.category === "Power Supply Unit"
   );
 

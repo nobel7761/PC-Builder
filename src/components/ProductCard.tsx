@@ -1,14 +1,12 @@
-import { IProduct } from "@/pages";
 import { addToProductList } from "@/redux/features/buildPC/buildPC";
 import { useAppDispatch } from "@/redux/hook";
+import { IProduct } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   const dispatch = useAppDispatch();
-
-  console.log("Product", product);
 
   const handleClick = (category: string) => {
     let addProduct: any = {};
@@ -130,7 +128,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           </button>
         </Link>
 
-        <Link href="/build-pc">
+        <Link href="/configure">
           <button
             disabled={product.status === "Out of Stock"}
             onClick={() => handleClick(product.category)}

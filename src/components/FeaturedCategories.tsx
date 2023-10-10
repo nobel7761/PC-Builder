@@ -1,4 +1,3 @@
-import { IProduct } from "@/pages";
 import React from "react";
 import Category from "./Category";
 
@@ -21,9 +20,11 @@ const FeaturedCategories = ({ categories }: { categories: string[] }) => {
 export default FeaturedCategories;
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://pc-builder-server-pink.vercel.app/products");
+  const res = await fetch(
+    "hhttps://backend-pc-builder-beta.vercel.app/products"
+  );
   const data = await res.json();
-  const allCategories = data?.data;
+  const allCategories = data;
 
   return {
     props: { allCategories },

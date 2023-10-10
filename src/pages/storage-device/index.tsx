@@ -1,7 +1,7 @@
 import RootLayout from "@/layout/RootLayout";
 import React, { ReactElement } from "react";
-import { IProduct } from "..";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import { IProduct } from "@/types/types";
 
 const StorageDevice = ({ allStorages }: { allStorages: IProduct[] }) => {
   return (
@@ -18,9 +18,11 @@ StorageDevice.getLayout = (page: ReactElement) => (
 );
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://pc-builder-server-pink.vercel.app/products");
+  const res = await fetch(
+    "https://backend-pc-builder-beta.vercel.app/products"
+  );
   const allProducts = await res.json();
-  const allStorages = allProducts?.data?.filter(
+  const allStorages = allProducts?.filter(
     (product: IProduct) => product.category === "Storage Device"
   );
 

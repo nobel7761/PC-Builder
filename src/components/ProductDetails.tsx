@@ -1,4 +1,4 @@
-import { IProduct } from "@/pages";
+import { IProduct } from "@/types/types";
 import Image from "next/image";
 import React from "react";
 import { FaUserAlt } from "react-icons/fa";

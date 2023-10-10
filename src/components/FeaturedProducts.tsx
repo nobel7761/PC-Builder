@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
-import { IProduct } from "@/pages";
 import { useRouter } from "next/router";
+import { IProduct } from "@/types/types";
 
 function shuffleArray(array: IProduct[]) {
   const shuffledArray = [...array];
