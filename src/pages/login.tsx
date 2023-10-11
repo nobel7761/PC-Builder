@@ -34,7 +34,7 @@ const LoginPage = () => {
             <Button
               onClick={() =>
                 signIn("github", {
-                  callbackUrl: "https://pc-builder-client-five.vercel.app",
+                  callbackUrl: "https://pc-builder-five-murex.vercel.app/",
                 })
               }
               className="md:px-4 md:mt-0 mt-2 w-full md:py-2 px-3 py-1.5 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
