@@ -128,7 +128,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           </button>
         </Link>
 
-        <Link href="/configure">
+        <Link href="/pc-build">
           <button
             disabled={product.status === "Out of Stock"}
             onClick={() => handleClick(product.category)}

@@ -115,7 +115,7 @@ const Navbar = () => {
         </div>
 
         <span
-          onClick={() => router.push("/configure")}
+          onClick={() => router.push("/pc-build")}
           className="w-full md:w-[150px] md:px-4 md:mt-0 mt-2 md:py-2 px-3 py-1.5 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           PC Builder
